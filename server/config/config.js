@@ -13,10 +13,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 //======================
 let urlDB;
 
-//if (process.env.NODE_ENV === "dev") {
-//urlDB = "mongodb://localhost:27017/mascota";
-//} else {
-urlDB =
-    "mongodb+srv://mascota-user:!!!13467982Mascota@cluster0.0bshj.mongodb.net/mascota";
-//}
+if (process.env.NODE_ENV === "dev") {
+    urlDB = "mongodb://localhost:27017/mascota";
+} else {
+    urlDB = urlDB = process.env.MONGO_URI;
+    //"mongodb+srv://mascota-user:!!!13467982Mascota@cluster0.0bshj.mongodb.net/mascota";
+}
 process.env.URLDB = urlDB;
