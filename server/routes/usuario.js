@@ -2,10 +2,12 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const Usuario = require("../models/usuario");
 
+const { verificaToken } = require("../middlewares/autenticacion");
+
 const _ = require("underscore");
 
 const app = express();
-app.get("/usuario", function(req, res) {
+app.get("/usuario", verificaToken, (req, res) => {
     //Para paginar, si no viene el parametro por el query arranca de la "0"
     let desde = req.query.desde || 0;
     desde = Number(desde);
